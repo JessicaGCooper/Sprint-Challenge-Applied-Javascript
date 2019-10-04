@@ -14,6 +14,11 @@ function tabs(topic){
     const tab = document.createElement('div');
     tab.classList.add('tab');
     tab.textContent = topic;
+
+    tab.addEventListener("click", () => {
+      tab.classList.toggle("active-tab");
+      });
+
     
     return tab
 }

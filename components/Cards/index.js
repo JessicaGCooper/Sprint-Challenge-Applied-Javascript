@@ -19,7 +19,8 @@
 // Create a card for each of the articles and add the card to the DOM.
 
 
-const entryPoint = document.querySelector('.cards_container');
+const entryPoint = document.querySelector('.cards-container');
+console.log(entryPoint);
 
 
 const newCard = (object) => {
@@ -58,16 +59,39 @@ axios
 .get('https://lambda-times-backend.herokuapp.com/articles')
   .then (response => {
     const artJavascript = response.data.articles.javascript;
-    // const artBootstrap = response.data.articles.bootstrap;
-    // const artTechnology = response.data.articles.technology;
-    // const artJquery = response.data.articles.jquery;
-    // const artNode = response.data.articles.node;
-    console.log(artJavascript)
-    artJavascript.forEach(element => { 
+    const artBootstrap = response.data.articles.bootstrap;
+    const artTechnology = response.data.articles.technology;
+    const artJquery = response.data.articles.jquery;
+    const artNode = response.data.articles.node;
+      artJavascript.forEach(element => { 
         const artFunc = newCard(element);
         entryPoint.appendChild(artFunc);
+        console.log(artFunc);
+      })
+      artBootstrap.forEach(element => { 
+        const artFunc = newCard(element);
+        entryPoint.appendChild(artFunc);
+        console.log(artFunc);
+      })
+      artTechnology.forEach(element => { 
+        const artFunc = newCard(element);
+        entryPoint.appendChild(artFunc);
+        console.log(artFunc);
+      })
+      artJquery.forEach(element => { 
+        const artFunc = newCard(element);
+        entryPoint.appendChild(artFunc);
+        console.log(artFunc);
+      })
+      artNode.forEach(element => { 
+        const artFunc = newCard(element);
+        entryPoint.appendChild(artFunc);
+        console.log(artFunc);
       })
     })
   .catch(error => {
     console.log("The data was not returned", error);
   });
+  
+
+  

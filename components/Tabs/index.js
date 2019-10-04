@@ -19,7 +19,6 @@ function tabs(topic){
       tab.classList.toggle("active-tab");
       });
 
-    
     return tab
 }
 
@@ -30,10 +29,10 @@ axios
       const newTab = tabs(element);
       topics.appendChild(newTab);
     })
-  })
+})
   .catch(error => {
     console.log("The data was not returned", error);
-  })
+})
 
 
 

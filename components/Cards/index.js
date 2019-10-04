@@ -20,8 +20,6 @@
 
 
 const entryPoint = document.querySelector('.cards-container');
-console.log(entryPoint);
-
 
 const newCard = (object) => {
 
@@ -58,40 +56,30 @@ return card
 axios
 .get('https://lambda-times-backend.herokuapp.com/articles')
   .then (response => {
-    const artJavascript = response.data.articles.javascript;
-    const artBootstrap = response.data.articles.bootstrap;
-    const artTechnology = response.data.articles.technology;
-    const artJquery = response.data.articles.jquery;
-    const artNode = response.data.articles.node;
-      artJavascript.forEach(element => { 
-        const artFunc = newCard(element);
-        entryPoint.appendChild(artFunc);
-        console.log(artFunc);
-      })
-      artBootstrap.forEach(element => { 
-        const artFunc = newCard(element);
-        entryPoint.appendChild(artFunc);
-        console.log(artFunc);
-      })
-      artTechnology.forEach(element => { 
-        const artFunc = newCard(element);
-        entryPoint.appendChild(artFunc);
-        console.log(artFunc);
-      })
-      artJquery.forEach(element => { 
-        const artFunc = newCard(element);
-        entryPoint.appendChild(artFunc);
-        console.log(artFunc);
-      })
-      artNode.forEach(element => { 
-        const artFunc = newCard(element);
-        entryPoint.appendChild(artFunc);
-        console.log(artFunc);
-      })
+      for (let key in response.data.articles){
+          response.data.articles[key].forEach(element => { 
+                const artFunc = newCard(element);
+                entryPoint.appendChild(artFunc);
+        })
+      }
     })
   .catch(error => {
     console.log("The data was not returned", error);
   });
-  
 
+
+// axios
+// .get('https://lambda-times-backend.herokuapp.com/articles')
+//   .then (response => {
+//         const articles = Object.keys(response.data.articles);
+//         console.log(articles);
+//         [articles].forEach(element => {
+//             const artFunc = newCard(element);
+//             entryPoint.appendChild(artFunc);
+//         })
+//     })
+//   .catch(error => {
+//     console.log("The data was not returned", error);
+//   });
+  
   
